@@ -1,6 +1,7 @@
 import React from "react";
 
 const App = () => {
+  const test = 'test'
   return (
     <>
       <h1>Lambda Eats</h1>
