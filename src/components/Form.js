@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-import Pizzas from './Pizzas'
+// import Pizzas from './Pizzas'
 import * as yup from "yup";
 import styled from 'styled-components'
 import '../styles/App.css'
@@ -9,6 +9,7 @@ import '../styles/App.css'
 
 
 export default function Form(props) {
+    const { setPizzas, pizzas } = props;
 
     // Defining Validation Schema
 
@@ -26,7 +27,7 @@ export default function Form(props) {
         topping9: yup.boolean(),
         topping10: yup.boolean(),
         gluten: yup.boolean(),
-        // sauce: yup.string(),
+        sauce: yup.string(),
         special: yup.string()
     })
 
@@ -45,7 +46,7 @@ export default function Form(props) {
         topping8: false,
         topping9: false,
         topping10: false,
-        // sauce: 'Original Red',
+        sauce: 'Original Red',
         gluten: false,
         special: ''
     }
@@ -58,7 +59,6 @@ export default function Form(props) {
     // Declaring our slices of state
     const [formData, setFormData] = useState(initialFormData)
     const [errors, setErrors] = useState(defaultErrors)
-    const [pizzas, setPizzas] = useState([])
     const [buttonDisable, setButtonDisable] = useState(true)
 
     //Keep our submit button disabled until form validations pass. 
@@ -72,6 +72,9 @@ export default function Form(props) {
     const history = useHistory()
     const routeToForm = () => {
         history.push('/')
+    }
+    const routeToOrders = () => {
+        history.push('/orders')
     }
 
     // Helper function to validate schema
@@ -121,14 +124,14 @@ export default function Form(props) {
             topping8: formData.topping8,
             topping9: formData.topping9,
             topping10: formData.topping10,
-            // sauce: formData.sauce,
+            sauce: formData.sauce,
             gluten: formData.gluten,
             special: formData.special
         }
         axios.post(`https://reqres.in/api/orders`, newPizza)
             .then(res => setPizzas([...pizzas, res.data]))
-        alert('Congrats! Pizza is on its way! Scroll Down for More Details')
         setFormData(initialFormData)
+        history.push('/orders')
     }
 
 
@@ -147,14 +150,6 @@ export default function Form(props) {
 
             </Nav>
 
-
-            {/* 
-            <Flex>
-                <div> */}
-
-
-            {/* 
-                </div> */}
 
             <form id='pizza-form' onSubmit={handleSubmit}>
                 <h2>Build Your Own Pizza</h2>
@@ -191,7 +186,7 @@ export default function Form(props) {
                 <div style={{ color: "red" }}>
                     <div>{errors.size}</div>
                 </div>
-                {/* <Choice>
+                <Choice>
                     <h3>Choice of Sauce</h3>
                 </Choice>
                 <label>Original Red
@@ -205,7 +200,7 @@ export default function Form(props) {
                 </label>
                 <label>Spinach Alfredo
                     <input onChange={handleRadio} type="radio" name='sauce' id='Spinach Alfredo' value='Spinach Alfredo' />
-                </label> */}
+                </label>
 
                 <Choice>
                     <h3>Add Toppings</h3>
@@ -266,13 +261,15 @@ export default function Form(props) {
                 <div>
                     <button name='submit' disabled={buttonDisable} id='order-button'> Add Order</button>
                 </div>
-
+                <div>
+                    <a onClick={routeToOrders}> Previous Orders</a>
+                </div>
             </form>
 
+            <div>
+                {/* <button onclick={routeToOrders}> Previous Orders</button> */}
+            </div>
 
-            <Pizzas pizzas={pizzas} />
-
-            {/* </Flex> */}
         </div>
 
     )

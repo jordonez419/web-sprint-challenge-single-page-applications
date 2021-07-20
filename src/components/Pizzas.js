@@ -1,11 +1,18 @@
 import React from 'react'
 import Pizza from './Pizza'
+import { useHistory } from 'react-router-dom'
 
 export default function Pizzas(props) {
     const { pizzas } = props;
+    const history = useHistory()
+    const routeToForm = () => {
+        history.push('/pizza')
+    }
 
     return (
+
         <div>
+            <h1>Orders</h1>
 
             {
                 pizzas.map(pizza => <Pizza key={pizza.id} name={pizza.name} size={pizza.size}
@@ -15,6 +22,7 @@ export default function Pizzas(props) {
                     topping9={pizza.topping9} topping10={pizza.topping10} sauce={pizza.sauce} gluten={pizza.gluten}
                 />)
             }
+            <a onClick={routeToForm}> Return To Pizza Builder</a>
         </div>
     )
 
