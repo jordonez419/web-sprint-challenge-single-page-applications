@@ -78,6 +78,9 @@ export default function Form(props) {
     const routeToOrders = () => {
         history.push('/orders')
     }
+    // const routeToDetails = () => {
+    //     history.push(`/orders/${id}`)
+    // }
 
     // Helper function to validate schema
     const setValidationErrors = (name, value) => {
@@ -132,10 +135,10 @@ export default function Form(props) {
             special: formData.special
         }
         axios.post(`https://reqres.in/api/orders`, newPizza)
-            .then(res => setPizzas([...pizzas, res.data]))
+            .then(res => setPizzas([...pizzas, res.data],
+                history.push(`/orders/${res.data.id}`)))
             .catch(err => console.log(err))
         setFormData(initialFormData)
-        history.push('/orders')
     }
 
 

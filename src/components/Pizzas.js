@@ -57,6 +57,6 @@ margin-top:5rem;
 const Flex = styled.div`
 display:flex;
 flex-direction:row;
-flex-wrap:nowrap;
+flex-wrap:wrap;
 margin-top:1rem;
 `
