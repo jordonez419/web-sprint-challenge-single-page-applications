@@ -22,6 +22,10 @@ export default function Home(props) {
 }
 
 const Container = styled.div`
-margin:20rem auto;
+margin:15rem auto;
 text-align:center;
+border:2px solid black;
+border-radius:15px;
+background-color:#494449;
+width:25%
 `

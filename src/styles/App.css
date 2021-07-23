@@ -2,12 +2,12 @@
   text-align: center;
 }
 body{
-  background-color: #e7e393;
-  color:#04030f;
+  background: url('https://source.unsplash.com/ykFYIojIbVw/1950x1200') no-repeat center center fixed;
+  color: #ddeac1;
   font-family: 'Merienda', cursive;
 }
 a{
-  color:#04030f;
+  color:#ddeac1;
   text-decoration: none;
   margin:1rem;
   transition: all .2s;
@@ -22,14 +22,16 @@ select{
 button{
   margin: 1rem 0;
   padding:.5rem;
-  color: #dd7230;
+  color: #ddeac1;
   background-color: #04030f;
   font-family: 'Merienda', cursive;
+  border-radius: 10px;
 }
 /* h3, p {
   text-align: center;
 } */
 form{
+  background-color: #494449;
 margin: 0 40rem;
 border:2px solid black;
 display:flex;
@@ -83,11 +85,11 @@ margin-bottom: 1.5rem;
 }
 
 input:checked + .slider {
-  background-color: #dd7230;
+  background-color:  #ddeac1;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #dd7230;
+  box-shadow: 0 0 1px  #ddeac1;
 }
 
 input:checked + .slider:before {

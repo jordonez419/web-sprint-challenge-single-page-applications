@@ -26,6 +26,7 @@ export default function Form(props) {
         topping8: yup.boolean(),
         topping9: yup.boolean(),
         topping10: yup.boolean(),
+        // noTopping: yup.boolean(),
         gluten: yup.boolean(),
         sauce: yup.string(),
         special: yup.string()
@@ -46,6 +47,7 @@ export default function Form(props) {
         topping8: false,
         topping9: false,
         topping10: false,
+        // noTopping: false,
         sauce: 'Original Red',
         gluten: false,
         special: ''
@@ -70,7 +72,7 @@ export default function Form(props) {
 
     // Function to navigate back to home page
     const history = useHistory()
-    const routeToForm = () => {
+    const routeHome = () => {
         history.push('/')
     }
     const routeToOrders = () => {
@@ -124,6 +126,7 @@ export default function Form(props) {
             topping8: formData.topping8,
             topping9: formData.topping9,
             topping10: formData.topping10,
+            // noTopping: formData.noTopping,
             sauce: formData.sauce,
             gluten: formData.gluten,
             special: formData.special
@@ -144,8 +147,8 @@ export default function Form(props) {
                     <p>Lambda Eats</p>
                 </div>
                 <div>
-                    <NavLink><a href='/ '>Home</a></NavLink>
-                    <NavLink><a href='/ '>Help</a></NavLink>
+                    <NavLink><a onClick={routeHome}>Home</a></NavLink>
+                    <NavLink><a onClick={routeHome}>Help</a></NavLink>
                 </div>
 
             </Nav>
@@ -240,7 +243,6 @@ export default function Form(props) {
                     <label > Canadian Bacon
                         <input type="checkbox" name='topping10' onChange={handleChange} value={formData.topping10} />
                     </label>
-
                 </Toppings>
 
                 <Choice>
@@ -305,7 +307,7 @@ const Choice = styled.div`
             margin-top:1rem;
             margin-bottom:1rem;
             width:38.7rem;;
-            background-color:#dd7230;
+            background-color: #8e9189;
             `
 
 const Toppings = styled.div`
