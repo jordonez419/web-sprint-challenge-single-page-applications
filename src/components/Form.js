@@ -133,6 +133,7 @@ export default function Form(props) {
         }
         axios.post(`https://reqres.in/api/orders`, newPizza)
             .then(res => setPizzas([...pizzas, res.data]))
+            .catch(err => console.log(err))
         setFormData(initialFormData)
         history.push('/orders')
     }
@@ -144,7 +145,7 @@ export default function Form(props) {
             <Nav>
 
                 <div>
-                    <p>Lambda Eats</p>
+
                 </div>
                 <div>
                     <NavLink><a onClick={routeHome}>Home</a></NavLink>
@@ -282,10 +283,6 @@ display:flex;
 flex-direction:row;
 justify-content:space-between;
 align-items:space-between;
-`
-
-const PizzaCard = styled.div`
-margin-left:2rem;
 `
 
 const Nav = styled.h1`

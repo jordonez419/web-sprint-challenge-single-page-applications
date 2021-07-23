@@ -1,9 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useHistory, useParams, Route, useRouteMatch } from 'react-router-dom'
 
 export default function Pizza(props) {
+    const match = useRouteMatch();
+    const { id } = props;
+
+    const history = useHistory()
+    const routeToDetails = () => {
+        history.push(`${match.url}/${id}`)
+    }
+
     const { name, size, special, topping1, topping2, topping3, topping4, topping5,
-        topping6, topping7, topping8, topping9, topping10, sauce, gluten, noTopping } = props;
+        topping6, topping7, topping8, topping9, topping10, sauce, gluten, noTopping, key } = props;
+
+
     return (
         <div>
             <Container>
@@ -18,26 +29,28 @@ export default function Pizza(props) {
                     <p>{size} Pizza</p>
                     {/* <p>Sauce: {sauce}</p> */}
                     <ul>
-                        <Ingredients><p>Ingredients</p></Ingredients>
+                        <Ingredients><h3>Ingredients</h3></Ingredients>
                         <List>
-                            <li>{noTopping ? 'No Toppings!' : 'Check Out These Toppings!'}</li>
-                            <li>{topping1 ? 'Pepperoni' : 'No Pepperoni on this Za'}</li>
-                            <li>{topping2 ? 'Anchovies' : 'No Anchovies on this Za'}</li>
-                            <li>{topping3 ? 'Mushrooms' : 'No Mushrooms on this Za'}</li>
-                            <li>{topping4 ? 'Sausage' : 'No Sausage on this Za'}</li>
-                            <li>{topping5 ? 'Spicy Italian Sausage' : 'No Spicy Sausage on this Za'}</li>
-                            <li>{topping6 ? 'Grilled Chicken' : 'No Grilled Chicken on this Za'}</li>
-                            <li>{topping7 ? 'Green Pepper' : 'No Green Peppers on this Za'}</li>
-                            <li>{topping8 ? 'Diced Tomatoes' : 'No Diced Tomatoes on this Za'}</li>
-                            <li>{topping9 ? 'Pineapple' : 'No Pineapple on this Za'}</li>
-                            <li>{topping10 ? 'Canadian Bacon' : 'No Canadian Bacon on this Za'}</li>
+                            <li>{noTopping ? 'No Toppings!' : ''}</li>
+                            <li>{topping1 ? 'Pepperoni' : ''}</li>
+                            <li>{topping2 ? 'Anchovies' : ''}</li>
+                            <li>{topping3 ? 'Mushrooms' : ''}</li>
+                            <li>{topping4 ? 'Sausage' : ''}</li>
+                            <li>{topping5 ? 'Spicy Italian Sausage' : ''}</li>
+                            <li>{topping6 ? 'Grilled Chicken' : ''}</li>
+                            <li>{topping7 ? 'Green Pepper' : ''}</li>
+                            <li>{topping8 ? 'Diced Tomatoes' : ''}</li>
+                            <li>{topping9 ? 'Pineapple' : ''}</li>
+                            <li>{topping10 ? 'Canadian Bacon' : ''}</li>
                         </List>
                     </ul>
                     <p>{sauce}</p>
-                    <p>{special ? `Special instructions: ${special}` : 'No Special Instructions'}</p>
+                    <p>{special ? `Special instructions: ${special}` : ''}</p>
                     <p>{gluten ? 'Gluten Free Crust!' : 'Plenty of delicious Gluten in that Crust'}</p>
+                    <a onClick={routeToDetails}>Details</a>
                 </div>
             </Container>
+
         </div>
     )
 }
@@ -56,6 +69,6 @@ const List = styled.ul`
 list-style-type:none;
 margin-right:4rem;
 `
-const Ingredients = styled.p`
+const Ingredients = styled.h3`
 margin-right:2rem;
 `
