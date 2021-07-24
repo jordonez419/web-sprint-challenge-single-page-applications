@@ -129,14 +129,14 @@ export default function Form(props) {
             topping8: formData.topping8,
             topping9: formData.topping9,
             topping10: formData.topping10,
-            // noTopping: formData.noTopping,
+
             sauce: formData.sauce,
             gluten: formData.gluten,
             special: formData.special
         }
         axios.post(`https://reqres.in/api/orders`, newPizza)
             .then(res => setPizzas([...pizzas, res.data],
-                history.push(`/orders/${res.data.id}`)))
+                history.push(`/orders`)))
             .catch(err => console.log(err))
         setFormData(initialFormData)
     }

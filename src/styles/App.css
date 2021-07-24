@@ -6,6 +6,9 @@ body{
   color: #ddeac1;
   font-family: 'Merienda', cursive;
 }
+img{
+  border-radius: 25%;
+}
 a{
   color:#ddeac1;
   text-decoration: none;
@@ -26,6 +29,11 @@ button{
   background-color: #04030f;
   font-family: 'Merienda', cursive;
   border-radius: 10px;
+  transition: all .2s;
+}
+button:hover{
+  cursor: pointer;
+  color: #dd7230;
 }
 /* h3, p {
   text-align: center;
